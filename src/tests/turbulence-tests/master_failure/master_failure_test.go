@@ -26,7 +26,7 @@ var _ = Describe("A single master and etcd failure", func() {
 		director := NewDirector(testconfig.Bosh)
 		deployment, err := director.FindDeployment(testconfig.Bosh.Deployment)
 		Expect(err).NotTo(HaveOccurred())
-		countRunningApiServerOnMaster := CountProcessesOnVmsOfType(deployment, MasterVmType, "kubernetes-api", VmRunningState)
+		countRunningApiServerOnMaster := CountProcessesOnVmsOfType(deployment, MasterVmType, "kube-apiserver", VmRunningState)
 
 		Expect(countRunningApiServerOnMaster()).To(Equal(1))
 
